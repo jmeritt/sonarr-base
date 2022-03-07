@@ -1,3 +1,3 @@
 #!/bin/bash
-docker build -t jmeritt/sonarr .
+docker build -t --no-cache jmeritt/sonarr .
 docker push jmeritt/sonarr
