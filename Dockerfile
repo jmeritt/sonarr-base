@@ -1,7 +1,5 @@
 FROM jmeritt/htpcarr
 
-RUN apt-get install -y ca-certificates-mono && cert-sync /etc/ssl/certs/ca-certificates.crt
-
 USER htpc
 
 RUN cd ~ && wget "https://services.sonarr.tv/v1/download/main/latest?version=3&os=linux" -O Sonarr.tar.gz &&\
