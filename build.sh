@@ -1,3 +1,4 @@
 #!/bin/bash
-docker buildx build --platform linux/amd64 -t jmeritt/sonarr --no-cache .
-docker push jmeritt/sonarr
+docker buildx build --platform linux/amd64 -t jmeritt/sonarr --no-cache . &&\
+docker push jmeritt/sonarr &&\
+kubectl rollout restart deployments sonarr
