@@ -17,18 +17,18 @@ spec:
         app: sonarr
     spec:
       initContainers:
-      # - name: init-priveleges-config
-      #   image: busybox
-      #   command:
-      #   - chown
-      #   - -R
-      #   - 2580:2580
-      #   - /config
-      #   securityContext:
-      #     privileged: true
-      #   volumeMounts:
-      #   - name: config
-      #     mountPath: /config
+      - name: init-priveleges-config
+        image: busybox
+        command:
+        - chown
+        - -R
+        - 2580:2580
+        - /config
+        securityContext:
+          runAsUser: 0
+        volumeMounts:
+        - name: config
+          mountPath: /config
       # - name: copy-config
       #   image: busybox
       #   command: ['/bin/sh', '-c', 'cp /config-src/*.xml /config/config.xml']
@@ -67,9 +67,6 @@ spec:
       volumes:
       - name: config
         emptyDir: {}
-      - name: config-src
-        configMap: 
-          name: sonarr-config
       - name: downloads
         emptyDir: {}
       - name: tv
